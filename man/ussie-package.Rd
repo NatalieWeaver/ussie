@@ -12,6 +12,7 @@ This package allows you to work with European football league data supplied by t
 Useful links:
 \itemize{
   \item \url{https://github.com/NatalieWeaver/ussie}
+  \item \url{https://natalieweaver.github.io/ussie/}
   \item Report bugs at \url{https://github.com/NatalieWeaver/ussie/issues}
 }
 
