@@ -15,11 +15,13 @@ All of the students in the “Building Tidy Tools” workshop at
 rstudio::conf(2022) built `ussie` to learn package development. A huge
 thanks to Emma Rand and Ian Lyttle for being fantastic teachers.
 
-Course materials: \* [Course
-website](https://rstudio-conf-2022.github.io/build-tidy-tools/) \*
-[“BT2T” course package](https://github.com/rstudio-conf-2022/btt22) \*
-[ussie example from
-instructors](https://github.com/rstudio-conf-2022/ussie)
+Course materials:
+
+-   [Course
+    website](https://rstudio-conf-2022.github.io/build-tidy-tools/)
+-   [“BT2T” course package](https://github.com/rstudio-conf-2022/btt22)
+-   [ussie example from
+    instructors](https://github.com/rstudio-conf-2022/ussie)
 
 The goal of `ussie` is to help you work with European soccer league data
 supplied by the `engsoccerdata` package. The name “ussie” is a reference
