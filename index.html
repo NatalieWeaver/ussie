@@ -69,7 +69,13 @@
 <div class="page-header"><h1 id="ussie">ussie<a class="anchor" aria-label="anchor" href="#ussie"></a>
 </h1></div>
 <!-- badges: start -->
-<p>The goal of ussie is to help you work with European soccer league data supplied by the <code>engsoccerdata</code> package.</p>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>All of the students in the “Building Tidy Tools” workshop at rstudio::conf(2022) built <code>ussie</code> to learn package development. A huge thanks to Emma Rand and Ian Lyttle for being fantastic teachers.</p>
+<p>Course materials: * <a href="https://rstudio-conf-2022.github.io/build-tidy-tools/" class="external-link">Course website</a> * <a href="https://github.com/rstudio-conf-2022/btt22" class="external-link">“BT2T” course package</a> * <a href="https://github.com/rstudio-conf-2022/ussie" class="external-link">ussie example from instructors</a></p>
+<p>The goal of <code>ussie</code> is to help you work with European soccer league data supplied by the <code>engsoccerdata</code> package. The name “ussie” is a reference to the Apple tv show “Ted Lasso”.</p>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -87,19 +93,21 @@
 <span><span class="co"># get the England league data in standard format</span></span>
 <span><span class="fu"><a href="reference/uss_make_matches.html">uss_make_matches</a></span><span class="op">(</span><span class="fu">engsoccerdata</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/engsoccerdata/man/england.html" class="external-link">england</a></span>, <span class="st">"England"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 192,004 x 8</span></span>
-<span><span class="co">#&gt;    country tier  season date       home         visitor goals_home goals_visitor</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;   &lt;fct&gt;  &lt;int&gt; &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;        &lt;int&gt;         &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1 England 1       1888 1888-12-15 Accrington ~ Aston ~          1             1</span></span>
-<span><span class="co">#&gt;  2 England 1       1888 1889-01-19 Accrington ~ Blackb~          0             2</span></span>
-<span><span class="co">#&gt;  3 England 1       1888 1889-03-23 Accrington ~ Bolton~          2             3</span></span>
-<span><span class="co">#&gt;  4 England 1       1888 1888-12-01 Accrington ~ Burnley          5             1</span></span>
-<span><span class="co">#&gt;  5 England 1       1888 1888-10-13 Accrington ~ Derby ~          6             2</span></span>
-<span><span class="co">#&gt;  6 England 1       1888 1888-12-29 Accrington ~ Everton          3             1</span></span>
-<span><span class="co">#&gt;  7 England 1       1888 1889-01-26 Accrington ~ Notts ~          1             2</span></span>
-<span><span class="co">#&gt;  8 England 1       1888 1888-10-20 Accrington ~ Presto~          0             0</span></span>
-<span><span class="co">#&gt;  9 England 1       1888 1889-04-20 Accrington ~ Stoke ~          2             0</span></span>
-<span><span class="co">#&gt; 10 England 1       1888 1888-11-24 Accrington ~ West B~          2             1</span></span>
-<span><span class="co">#&gt; # ... with 191,994 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt;    country tier  season date       home            visitor       goals~1 goals~2</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;   &lt;fct&gt;  &lt;int&gt; &lt;date&gt;     &lt;chr&gt;           &lt;chr&gt;           &lt;int&gt;   &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1 England 1       1888 1888-12-15 Accrington F.C. Aston Villa         1       1</span></span>
+<span><span class="co">#&gt;  2 England 1       1888 1889-01-19 Accrington F.C. Blackburn Ro~       0       2</span></span>
+<span><span class="co">#&gt;  3 England 1       1888 1889-03-23 Accrington F.C. Bolton Wande~       2       3</span></span>
+<span><span class="co">#&gt;  4 England 1       1888 1888-12-01 Accrington F.C. Burnley             5       1</span></span>
+<span><span class="co">#&gt;  5 England 1       1888 1888-10-13 Accrington F.C. Derby County        6       2</span></span>
+<span><span class="co">#&gt;  6 England 1       1888 1888-12-29 Accrington F.C. Everton             3       1</span></span>
+<span><span class="co">#&gt;  7 England 1       1888 1889-01-26 Accrington F.C. Notts County        1       2</span></span>
+<span><span class="co">#&gt;  8 England 1       1888 1888-10-20 Accrington F.C. Preston Nort~       0       0</span></span>
+<span><span class="co">#&gt;  9 England 1       1888 1889-04-20 Accrington F.C. Stoke City          2       0</span></span>
+<span><span class="co">#&gt; 10 England 1       1888 1888-11-24 Accrington F.C. West Bromwic~       2       1</span></span>
+<span><span class="co">#&gt; # ... with 191,994 more rows, and abbreviated variable names 1: goals_home,</span></span>
+<span><span class="co">#&gt; #   2: goals_visitor</span></span>
+<span><span class="co">#&gt; # i Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
