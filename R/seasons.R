@@ -12,11 +12,11 @@
 #' @noRd
 #'
 seasons_intermediate <- function(data_teams_matches, fn_points_per_win) {
-
+  
   # 2.4.1 Misc. (as_function())
   #
   # 1. accept purrr-style anonymus functions
-
+  
   result <-
     data_teams_matches |>
     # across() lets you use tidy-select semantics inside data-masking functions
@@ -37,7 +37,7 @@ seasons_intermediate <- function(data_teams_matches, fn_points_per_win) {
       goals_for = .data$goals_for,
       goals_against = .data$goals_against
     )
-
+  
   result
 }
 
@@ -48,12 +48,13 @@ seasons_intermediate <- function(data_teams_matches, fn_points_per_win) {
 #' return return a data frame on wins, losses, points, etc.:
 #'
 #' - cumulative, over the course of each season: `uss_make_seasons_cumulative()`
+#' - final result for each season: `uss_make_seasons_final()`
 #'
 #' @param data_teams_matches data frame created using [uss_make_teams_matches()]
 #' @param fn_points_per_win `function` with vectorized arguments `country`,
 #'   `season`, that returns a integer indicating points-per-win.
 #'   A default function is provided, [uss_points_per_win()], which includes
-#'   the countries in [uss_countries()].
+#'   the countries in [uss_countries()]. 
 #'
 #' @return [tibble][tibble::tibble-package] with columns
 #'   `country`, `tier`, `season`, `team`, `date`, `matches`, `wins`,
@@ -66,21 +67,21 @@ seasons_intermediate <- function(data_teams_matches, fn_points_per_win) {
 #'
 uss_make_seasons_cumulative <- function(data_teams_matches,
                                         fn_points_per_win = uss_points_per_win) {
-
+  
   validate_data_frame(data_teams_matches)
   validate_cols(data_teams_matches, cols_teams_matches())
-
+  
   result <-
     data_teams_matches |>
     seasons_intermediate(fn_points_per_win) |>
     dplyr::mutate(
       dplyr::across(cols_seasons_accumulate(), cumsum)
-    )
-
+    ) 
+  
   result
 }
 
-# 2.3.6 tidy eval (exercise)
+# 2.3.6 tidy eval (exercise) 
 #
 # Create a new function: `uss_make_seasons_final()`:
 #
@@ -91,23 +92,21 @@ uss_make_seasons_cumulative <- function(data_teams_matches,
 # 4. You can use the same validation (then test the validation by uncommenting).
 # 5. Instead of `dplyr::mutate()`, you can use `dplyr::summarise()`.
 # 6  You will want to `sum` quantities, rather than `cumsum`.
-# 7. You will have to summarise the `date` differently than
+# 7. You will have to summarise the `date` differently than 
 #    `cols_seasons_accumulate()`.
 # 8. Use the `arrange_final()` function to arrange the results into "normal"
 #    standings.
 # 9. Test the function by uncommenting the tests.
 
-
 #' @rdname uss_make_seasons_cumulative
-#'
 #' @export
 #'
 uss_make_seasons_final <- function(data_teams_matches,
-                                        fn_points_per_win = uss_points_per_win) {
-
+                                   fn_points_per_win = uss_points_per_win) {
+  
   validate_data_frame(data_teams_matches)
   validate_cols(data_teams_matches, cols_teams_matches())
-
+  
   result <-
     data_teams_matches |>
     seasons_intermediate(fn_points_per_win) |>
@@ -116,14 +115,13 @@ uss_make_seasons_final <- function(data_teams_matches,
       dplyr::across(cols_seasons_accumulate(), sum)
     ) |>
     arrange_final()
-
-  result
+  
+  result  
 }
-
 
 # internal function to arrange season-final standings
 arrange_final <- function(data) {
-
+  
     result <-
       data |>
       dplyr::group_by(
@@ -138,3 +136,4 @@ arrange_final <- function(data) {
 
     result
 }
+
